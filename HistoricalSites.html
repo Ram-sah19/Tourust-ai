@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Historical Sites | Discover Heritage Sites</title>
+  <link rel="stylesheet" href="explore.css"/>
+  <link rel="stylesheet" href="HistoricalSites.css"/>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <h1 class="logo">Discover Heritage Sites</h1>
+    <ul class="nav-links">
+      <li><a href="explore.html">Home</a></li>
+      <li><a href="explore.html">Categories</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><button class="explore-btn">Start Exploring</button></li>
+    </ul>
+  </nav>
+
+<!-- Historical Sites Hero Section with Divine Hover Effect -->
+<section class="historical-hero" id="divineHero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h2>Explore Ancient Historical Sites of South India</h2>
+    <div class="search-container">
+      <input type="text" placeholder="Search historical sites..." id="siteSearch"/>
+      <button id="searchBtn">Go</button>
+    </div>
+  </div>
+</section>
+
+  <section class="categories">
+    <h3>Categories</h3>
+    <div class="category-grid">
+        <!-- Added button here -->
+        <button class="explore-temple-btn">Explore Temples</button>
+        <button class="explore-museum-btn">Explore Museums</button>
+        <button class="explore-historical-btn">Explore Historical Sites</button>
+        <button class="explore-cultural-btn">Explore Cultural Centers</button>
+        <button><i class="fas fa-map"></i> Maps & Navigation</button>
+
+    </div>
+</section>
+
+
+  <!-- Historical Sites Grid Section -->
+  <section class="historical-grid-section">
+    <h3>Featured Historical Sites</h3>
+    <div class="historical-grid" id="historicalGrid">
+      <!-- Historical site cards will be injected dynamically by JS -->
+    </div>
+  </section>
+
+  <!-- Historical Site Details Modal -->
+  <div id="historicalModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="historical-details">
+        <h2 id="siteTitle">Site Name</h2>
+        <img id="siteImage" src="" alt="Historical Site Image"/>
+        <p><strong><i class="fas fa-map-marker-alt"></i> Location:</strong> <span id="siteLocation"></span></p>
+        <p><strong><i class="fas fa-history"></i> Historical Period:</strong> <span id="sitePeriod"></span></p>
+        <p><strong><i class="fas fa-calendar-alt"></i> Best Time to Visit:</strong> <span id="siteBestTime"></span></p>
+        <h3>Architectural Highlights</h3>
+        <p id="siteHighlights"></p>
+        <h3>Historical Significance</h3>
+        <p id="siteSignificance"></p>
+        <h3>Nearby Attractions</h3>
+        <p id="siteNearby"></p>
+        <h3>About this Site</h3>
+        <p id="siteDescription"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // === HISTORICAL SITE DATA ===
+      const historicalData = [
+        {
+          name: "Hampi",
+          image: "his/Hampi.jpeg",
+          location: "Vijayanagara District, Karnataka",
+          period: "14th-16th Century (Vijayanagara Empire)",
+          besttime: "October to February",
+          highlights: "Virupaksha Temple, Stone Chariot, Lotus Mahal",
+          significance: "Capital of the Vijayanagara Empire, UNESCO World Heritage Site",
+          nearby: "Tungabhadra River, Anegundi",
+          description: "The ruins of Hampi spread over 4,100 hectares and are a UNESCO World Heritage Site. It was the last capital of the Vijayanagara Empire, one of the greatest Hindu empires in Indian history."
+        },
+        {
+          name: "Mahabalipuram",
+          image: "his/Maha.jpeg",
+          location: "Chengalpattu District, Tamil Nadu",
+          period: "7th-9th Century (Pallava Dynasty)",
+          besttime: "November to February",
+          highlights: "Shore Temple, Five Rathas, Arjuna's Penance",
+          significance: "UNESCO World Heritage Site, ancient port city",
+          nearby: "Crocodile Bank, MGM Dizzee World",
+          description: "Known for its 7th-8th century temples and monuments carved out of rock, Mahabalipuram was a major seaport of the Pallava kingdom. The site contains nearly forty monuments including the famous Shore Temple."
+        },
+        {
+          name: "Meenakshi Temple",
+          image: "image/madurai.jpeg",
+          location: "Madurai, Tamil Nadu",
+          period: "Originally 6th Century BCE, rebuilt 16th-17th Century",
+          besttime: "October to March",
+          highlights: "1,000-pillar hall, Gopurams, Golden Lotus Tank",
+          significance: "One of India's most important Hindu temples",
+          nearby: "Thirumalai Nayak Palace, Gandhi Museum",
+          description: "Dedicated to Goddess Meenakshi (Parvati) and Lord Sundareshwar (Shiva), this temple complex covers 14 acres with 14 gopurams (towers). The current structure was built between 1623-1655 CE."
+        },
+        {
+          name: "Golconda Fort",
+          image: "his/Gol.jpeg",
+          location: "Hyderabad, Telangana",
+          period: "12th-16th Century (Kakatiya & Qutb Shahi Dynasties)",
+          besttime: "October to February",
+          highlights: "Acoustic system, Rani Mahal, Fateh Darwaza",
+          significance: "Famous diamond mines including Koh-i-Noor",
+          nearby: "Qutb Shahi Tombs, Taramati Baradari",
+          description: "Originally a mud fort built by the Kakatiya dynasty, it was later expanded into a massive granite fort by the Qutb Shahi kings. The fort was famous for its diamond trade and unique acoustic signaling system."
+        },
+        {
+          name: "Bekal Fort",
+          image: "his/Bekal.jpeg",
+          location: "Kasaragod, Kerala",
+          period: "17th Century (Keladi Nayakas & Tipu Sultan)",
+          besttime: "September to March",
+          highlights: "Observation towers, Sea bastion, Water tank",
+          significance: "Largest fort in Kerala with strategic sea view",
+          nearby: "Bekal Beach, Ananthapura Lake Temple",
+          description: "This 40-acre fort is the largest and best-preserved fort in Kerala, offering spectacular views of the Arabian Sea. The fort's zigzag entrance and strategically placed holes on the outer walls reveal its military architecture."
+        },
+        {
+          name: "Brihadeeswarar Temple",
+          image: "image/place.jpeg",
+          location: "Thanjavur, Tamil Nadu",
+          period: "11th Century (Chola Dynasty)",
+          besttime: "October to March",
+          highlights: "216-feet vimana, Nandi statue, Fresco paintings",
+          significance: "UNESCO World Heritage Site, Chola architecture masterpiece",
+          nearby: "Thanjavur Palace, Saraswathi Mahal Library",
+          description: "Built by Raja Raja Chola I in 1010 CE, this temple is a brilliant example of Dravidian architecture. The 216-feet tall vimana (tower) is made of granite and has a capstone weighing 80 tons."
+        },
+        {
+          name: "Padmanabhapuram Palace",
+          image: "his/Pad.jpeg",
+          location: "Kanyakumari District, Tamil Nadu",
+          period: "16th-18th Century (Travancore Kings)",
+          besttime: "October to February",
+          highlights: "Mantrasala, Thai Kottaram, Nataksala",
+          significance: "Wooden palace with traditional Kerala architecture",
+          nearby: "Kanyakumari, Thirparappu Falls",
+          description: "This magnificent wooden palace was the traditional home of the Travancore royal family. The palace complex includes structures dating from the 16th to 18th centuries, showcasing exquisite Kerala architecture."
+        },
+        {
+          name: "Lepakshi",
+          image: "his/Lep.jpeg",
+          location: "Anantapur District, Andhra Pradesh",
+          period: "16th Century (Vijayanagara Period)",
+          besttime: "October to March",
+          highlights: "Hanging pillar, Veerabhadra Temple, Nandi statue",
+          significance: "Fine example of Vijayanagara architecture",
+          nearby: "Hindupur, Puttaparthi",
+          description: "Lepakshi is famous for its Vijayanagara-style temples and mural paintings. The Veerabhadra Temple contains a 'hanging pillar' that doesn't touch the ground and a massive Nandi statue carved from a single granite block."
+        }
+      ];
+
+      // === LOAD HISTORICAL SITE CARDS ===
+      const historicalGrid = document.getElementById("historicalGrid");
+      if (historicalGrid) {
+        historicalData.forEach(site => {
+          const card = document.createElement("div");
+          card.className = "card historical-card";
+          
+          // Set all data attributes
+          card.dataset.name = site.name;
+          card.dataset.image = site.image;
+          card.dataset.location = site.location;
+          card.dataset.period = site.period;
+          card.dataset.besttime = site.besttime;
+          card.dataset.highlights = site.highlights;
+          card.dataset.significance = site.significance;
+          card.dataset.nearby = site.nearby;
+          card.dataset.description = site.description;
+
+          card.innerHTML = `
+            <img src="${site.image}" alt="${site.name}">
+            <h4>${site.name}</h4>
+            <p><i class="fas fa-map-marker-alt"></i> ${site.location}</p>
+            <p><i class="fas fa-history"></i> ${site.period}</p>
+          `;
+
+          historicalGrid.appendChild(card);
+        });
+      }
+
+      // === MODAL FUNCTIONALITY ===
+      const modal = document.getElementById("historicalModal");
+      if (modal) {
+        const closeBtn = modal.querySelector(".close");
+        
+        // Add click event to all historical site cards
+        document.querySelectorAll(".historical-card").forEach(card => {
+          card.addEventListener("click", function() {
+            // Populate modal with data from clicked card
+            document.getElementById("siteTitle").textContent = this.dataset.name;
+            document.getElementById("siteImage").src = this.dataset.image;
+            document.getElementById("siteLocation").textContent = this.dataset.location;
+            document.getElementById("sitePeriod").textContent = this.dataset.period;
+            document.getElementById("siteBestTime").textContent = this.dataset.besttime;
+            document.getElementById("siteHighlights").textContent = this.dataset.highlights;
+            document.getElementById("siteSignificance").textContent = this.dataset.significance;
+            document.getElementById("siteNearby").textContent = this.dataset.nearby;
+            document.getElementById("siteDescription").textContent = this.dataset.description;
+            
+            // Show modal
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden";
+          });
+        });
+
+        // Close modal when clicking X button
+        if (closeBtn) {
+          closeBtn.addEventListener("click", function() {
+            modal.style.display = "none";
+            document.body.style.overflow = "";
+          });
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener("click", function(event) {
+          if (event.target === modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = "";
+          }
+        });
+      }
+
+      // === SEARCH FUNCTIONALITY ===
+      const searchInput = document.getElementById("siteSearch");
+      const searchBtn = document.getElementById("searchBtn");
+
+      function searchSites() {
+        const query = searchInput.value.toLowerCase().trim();
+        const cards = document.querySelectorAll(".historical-card");
+        
+        cards.forEach(card => {
+          const name = card.dataset.name.toLowerCase();
+          const location = card.dataset.location.toLowerCase();
+          const period = card.dataset.period.toLowerCase();
+          
+          if (name.includes(query) || location.includes(query) || period.includes(query)) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      }
+
+      if (searchBtn && searchInput) {
+        searchBtn.addEventListener("click", searchSites);
+        searchInput.addEventListener("keyup", function(e) {
+          if (e.key === "Enter") searchSites();
+        });
+      }
+    });
+  </script>
+  <script src="ra.js"></script>
+  
+<script>
+  // Optional: Add divine sound on hover
+  document.getElementById('divineHero').addEventListener('mouseenter', function() {
+    // In a real implementation, you would uncomment this and add a subtle sound
+    // const bellSound = new Audio('temple-bell.mp3');
+    // bellSound.volume = 0.3;
+    // bellSound.play();
+  });
+</script>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h2>Discover Heritage Sites</h2>
+        <p>Exploring cultural heritage through technology</p>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2023 Discover Heritage Sites. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

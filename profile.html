@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile | Discover Heritage Sites</title>
+  <link rel="stylesheet" href="explore.css"/>
+  <link rel="stylesheet" href="profile.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <h1 class="logo">Discover Heritage Sites</h1>
+    <ul class="nav-links">
+      <li><a href="explore.html">Home</a></li>
+      <li><a href="explore.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a class="active" href="#">Profile</a></li>
+      <li><button class="explore-btn">Start Exploring</button></li>
+    </ul>
+  </nav>
+
+  <!-- Profile Hero Section -->
+  <section class="profile-hero">
+    <div class="hero-content">
+      <h2>Your Heritage Journey</h2>
+      <p>Track your explorations and saved cultural treasures</p>
+    </div>
+  </section>
+
+  <!-- Profile Section -->
+  <section class="profile-section">
+    <div class="profile-container">
+      <!-- User Info Card -->
+      <div class="user-card">
+        <div class="user-avatar">
+          <img src="profile-avatar.jpg" alt="User Avatar">
+          <button class="edit-avatar-btn"><i class="fas fa-camera"></i></button>
+        </div>
+        <div class="user-info">
+          <h3>Alexandra Chen</h3>
+          <p class="user-location"><i class="fas fa-map-marker-alt"></i> New York, USA</p>
+          <p class="member-since">Member since June 2020</p>
+          <div class="user-stats">
+            <div class="stat-item">
+              <span class="stat-number">47</span>
+              <span class="stat-label">Sites Visited</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">128</span>
+              <span class="stat-label">Saved Items</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">23</span>
+              <span class="stat-label">Contributions</span>
+            </div>
+          </div>
+          <button class="edit-profile-btn">Edit Profile</button>
+        </div>
+      </div>
+
+      <!-- Profile Content -->
+      <div class="profile-content">
+        <!-- Navigation Tabs -->
+        <div class="profile-tabs">
+          <button class="tab-btn active" data-tab="visited">Visited Sites</button>
+          <button class="tab-btn" data-tab="saved">Saved Sites</button>
+          <button class="tab-btn" data-tab="contributions">Contributions</button>
+          <button class="tab-btn" data-tab="badges">Badges</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content active" id="visited">
+          <h3>Your Visited Heritage Sites</h3>
+          <div class="site-grid">
+            <!-- Visited Site 1 -->
+            <div class="site-card" data-site-id="taj-mahal">
+              <div class="site-img">
+                <img src="taj-mahal.jpg" alt="Taj Mahal">
+                <span class="visited-date">Visited: 15 Mar 2023</span>
+              </div>
+              <div class="site-info">
+                <h4>Taj Mahal</h4>
+                <p class="site-location">Agra, India</p>
+                <div class="rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span>4.0</span>
+                </div>
+                <p class="site-desc">An ivory-white marble mausoleum with incredible Mughal architecture...</p>
+                <button class="view-btn">View Details</button>
+              </div>
+            </div>
+
+            <!-- Visited Site 2 -->
+            <div class="site-card" data-site-id="machu-picchu">
+              <div class="site-img">
+                <img src="machu-picchu.jpg" alt="Machu Picchu">
+                <span class="visited-date">Visited: 02 Aug 2022</span>
+              </div>
+              <div class="site-info">
+                <h4>Machu Picchu</h4>
+                <p class="site-location">Cusco Region, Peru</p>
+                <div class="rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <span>5.0</span>
+                </div>
+                <p class="site-desc">15th-century Inca citadel situated on a mountain ridge with breathtaking views...</p>
+                <button class="view-btn">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="saved">
+          <h3>Your Saved Heritage Sites</h3>
+          <div class="site-grid">
+            <!-- Saved Site 1 -->
+            <div class="site-card" data-site-id="great-wall">
+              <div class="site-img">
+                <img src="great-wall.jpg" alt="Great Wall of China">
+                <span class="saved-date">Saved: 10 Jan 2023</span>
+              </div>
+              <div class="site-info">
+                <h4>Great Wall of China</h4>
+                <p class="site-location">Northern China</p>
+                <p class="site-desc">Series of fortifications made of stone, brick, tamped earth, wood, and other materials...</p>
+                <button class="view-btn">View Details</button>
+                <button class="remove-btn">Remove</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="contributions">
+          <h3>Your Contributions</h3>
+          <div class="contributions-list">
+            <div class="contribution-item">
+              <div class="contribution-icon">
+                <i class="fas fa-camera"></i>
+              </div>
+              <div class="contribution-details">
+                <h4>Added 5 photos to Angkor Wat</h4>
+                <p class="contribution-date">15 April 2023</p>
+                <p class="contribution-status approved">Approved</p>
+              </div>
+            </div>
+            <div class="contribution-item">
+              <div class="contribution-icon">
+                <i class="fas fa-edit"></i>
+              </div>
+              <div class="contribution-details">
+                <h4>Updated description for Petra</h4>
+                <p class="contribution-date">02 March 2023</p>
+                <p class="contribution-status pending">Pending Review</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="badges">
+          <h3>Your Badges</h3>
+          <div class="badges-grid">
+            <div class="badge-card earned">
+              <div class="badge-icon">
+                <i class="fas fa-globe-americas"></i>
+              </div>
+              <div class="badge-info">
+                <h4>World Explorer</h4>
+                <p>Visited heritage sites in 3+ continents</p>
+              </div>
+            </div>
+            <div class="badge-card earned">
+              <div class="badge-icon">
+                <i class="fas fa-camera-retro"></i>
+              </div>
+              <div class="badge-info">
+                <h4>Photo Contributor</h4>
+                <p>Uploaded 10+ photos to heritage sites</p>
+              </div>
+            </div>
+            <div class="badge-card locked">
+              <div class="badge-icon">
+                <i class="fas fa-book"></i>
+              </div>
+              <div class="badge-info">
+                <h4>History Buff</h4>
+                <p>Read about 50+ heritage sites</p>
+                <p class="progress">25/50</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h2>Discover Heritage Sites</h2>
+        <p>Exploring cultural heritage through technology</p>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2023 Discover Heritage Sites. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Edit Profile Modal -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Edit Your Profile</h2>
+      <form class="edit-profile-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" value="AlexandraChen">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" value="alex.chen@example.com">
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" id="location" value="New York, USA">
+        </div>
+        <div class="form-group">
+          <label for="bio">Bio</label>
+          <textarea id="bio" rows="4">Cultural heritage enthusiast with a passion for ancient architecture and world history.</textarea>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="cancel-btn">Cancel</button>
+          <button type="submit" class="save-btn">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Site Details Popup -->
+  <div id="sitePopup" class="site-popup">
+    <div class="popup-content">
+      <span class="close-popup">&times;</span>
+      <div class="popup-header">
+        <img id="popupSiteImg" src="" alt="Site Image">
+        <div class="popup-title">
+          <h3 id="popupSiteName"></h3>
+          <p id="popupSiteLocation"></p>
+          <div class="popup-rating" id="popupRating"></div>
+        </div>
+      </div>
+      <div class="popup-body">
+        <div class="popup-details">
+          <h4>About This Site</h4>
+          <p id="popupSiteDesc"></p>
+          <div class="site-facts">
+            <div class="fact-item">
+              <i class="fas fa-calendar-alt"></i>
+              <span id="popupSiteYear"></span>
+            </div>
+            <div class="fact-item">
+              <i class="fas fa-archway"></i>
+              <span id="popupSiteStyle"></span>
+            </div>
+            <div class="fact-item">
+              <i class="fas fa-globe-americas"></i>
+              <span id="popupSiteRegion"></span>
+            </div>
+          </div>
+        </div>
+        <div class="popup-gallery">
+          <h4>Gallery</h4>
+          <div class="gallery-grid" id="popupGallery"></div>
+        </div>
+      </div>
+      <div class="popup-footer">
+        <button class="popup-btn save-btn"><i class="far fa-bookmark"></i> Save</button>
+        <button class="popup-btn share-btn"><i class="fas fa-share-alt"></i> Share</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Tab functionality
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Remove active class from all buttons and contents
+          tabBtns.forEach(btn => btn.classList.remove('active'));
+          tabContents.forEach(content => content.classList.remove('active'));
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          // Show corresponding content
+          const tabId = this.getAttribute('data-tab');
+          document.getElementById(tabId).classList.add('active');
+        });
+      });
+      
+      // Edit Profile Modal
+      const editModal = document.getElementById('editModal');
+      const editBtn = document.querySelector('.edit-profile-btn');
+      const closeModal = editModal.querySelector('.close');
+      const cancelBtn = editModal.querySelector('.cancel-btn');
+      
+      // Open modal
+      editBtn.addEventListener('click', function() {
+        editModal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      });
+      
+      // Close modal
+      function closeEditModal() {
+        editModal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+      
+      closeModal.addEventListener('click', closeEditModal);
+      cancelBtn.addEventListener('click', closeEditModal);
+      
+      // Close when clicking outside modal
+      window.addEventListener('click', function(event) {
+        if (event.target === editModal) {
+          closeEditModal();
+        }
+      });
+      
+      // Form submission
+      const editForm = document.querySelector('.edit-profile-form');
+      editForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Here you would typically send the data to a server
+        alert('Profile updated successfully!');
+        closeEditModal();
+      });
+      
+      // Navigation functionality
+      const exploreBtn = document.querySelector('.explore-btn');
+      if (exploreBtn) {
+        exploreBtn.addEventListener('click', function() {
+          window.location.href = 'explore.html';
+        });
+      }
+      
+      // Site Details Popup Functionality
+      const viewBtns = document.querySelectorAll('.view-btn');
+      const sitePopup = document.getElementById('sitePopup');
+      const closePopup = document.querySelector('.close-popup');
+      
+      // Sample site data (in a real app, this would come from a database)
+      const siteData = {
+        "taj-mahal": {
+          name: "Taj Mahal",
+          location: "Agra, India",
+          description: "The Taj Mahal is an ivory-white marble mausoleum on the right bank of the Yamuna river in the Indian city of Agra. It was commissioned in 1632 by the Mughal emperor Shah Jahan to house the tomb of his favorite wife, Mumtaz Mahal. The Taj Mahal complex is believed to have been completed in its entirety in 1653 at a cost estimated at the time to be around 32 million rupees, which in 2020 would be approximately 70 billion rupees (about U.S. $956 million).",
+          year: "1632-1653",
+          style: "Mughal Architecture",
+          region: "South Asia",
+          rating: 4,
+          images: [
+            "taj-mahal.jpg",
+            "taj-mahal-2.jpg",
+            "taj-mahal-3.jpg"
+          ]
+        },
+        "machu-picchu": {
+          name: "Machu Picchu",
+          location: "Cusco Region, Peru",
+          description: "Machu Picchu is a 15th-century Inca citadel, located in the Eastern Cordillera of southern Peru, on a 2,430-meter (7,970 ft) mountain ridge. It is located in the Cusco Region, Urubamba Province, Machupicchu District, above the Sacred Valley, which is 80 kilometers (50 mi) northwest of Cuzco. Most archaeologists believe that Machu Picchu was constructed as an estate for the Inca emperor Pachacuti (1438–1472).",
+          year: "15th Century",
+          style: "Inca Architecture",
+          region: "South America",
+          rating: 5,
+          images: [
+            "machu-picchu.jpg",
+            "machu-picchu-2.jpg",
+            "machu-picchu-3.jpg"
+          ]
+        },
+        "great-wall": {
+          name: "Great Wall of China",
+          location: "Northern China",
+          description: "The Great Wall of China is a series of fortifications that were built across the historical northern borders of ancient Chinese states and Imperial China as protection against various nomadic groups from the Eurasian Steppe. Several walls were built from as early as the 7th century BC, with selective stretches later joined by Qin Shi Huang (220–206 BC), the first emperor of China.",
+          year: "7th Century BC",
+          style: "Chinese Fortification",
+          region: "East Asia",
+          rating: 5,
+          images: [
+            "great-wall.jpg",
+            "great-wall-2.jpg",
+            "great-wall-3.jpg"
+          ]
+        }
+      };
+      
+      // Open popup when clicking View Details
+      viewBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const siteCard = this.closest('.site-card');
+          const siteId = siteCard.getAttribute('data-site-id');
+          
+          if (siteData[siteId]) {
+            const site = siteData[siteId];
+            
+            // Populate popup with data
+            document.getElementById('popupSiteImg').src = site.images[0];
+            document.getElementById('popupSiteImg').alt = site.name;
+            document.getElementById('popupSiteName').textContent = site.name;
+            document.getElementById('popupSiteLocation').textContent = site.location;
+            document.getElementById('popupSiteDesc').textContent = site.description;
+            document.getElementById('popupSiteYear').textContent = `Built: ${site.year}`;
+            document.getElementById('popupSiteStyle').textContent = site.style;
+            document.getElementById('popupSiteRegion').textContent = site.region;
+            
+            // Set rating stars
+            const ratingContainer = document.getElementById('popupRating');
+            ratingContainer.innerHTML = '';
+            for (let i = 1; i <= 5; i++) {
+              const star = document.createElement('i');
+              star.className = i <= site.rating ? 'fas fa-star' : 'far fa-star';
+              ratingContainer.appendChild(star);
+            }
+            ratingContainer.innerHTML += `<span>${site.rating}.0</span>`;
+            
+            // Populate gallery
+            const galleryContainer = document.getElementById('popupGallery');
+            galleryContainer.innerHTML = '';
+            site.images.forEach(img => {
+              const galleryImg = document.createElement('img');
+              galleryImg.src = img;
+              galleryImg.alt = site.name;
+              galleryContainer.appendChild(galleryImg);
+            });
+            
+            // Show popup
+            sitePopup.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      });
+      
+      // Close popup
+      closePopup.addEventListener('click', function() {
+        sitePopup.style.display = 'none';
+        document.body.style.overflow = '';
+      });
+      
+      // Close when clicking outside popup content
+      sitePopup.addEventListener('click', function(e) {
+        if (e.target === sitePopup) {
+          sitePopup.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

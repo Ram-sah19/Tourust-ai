@@ -1,0 +1,511 @@
+/* CulturalCentres.css */
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Cultural Hero Section */
+.cultural-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('cultural-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.cultural-hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-container input {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px 0 0 30px;
+    font-size: 16px;
+}
+
+.search-container button {
+    padding: 12px 25px;
+    background-color: #3498db; /* Purple accent color for cultural theme */
+    color: white;
+    border: none;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.search-container button:hover {
+    background-color: #2980b9;
+}
+
+/* Cultural Grid Section */
+.cultural-grid-section {
+    padding: 50px;
+    background-color: white;
+}
+
+.cultural-grid-section h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #2c3e50;
+}
+
+.cultural-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cultural-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cultural-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.cultural-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.cultural-card:hover img {
+    transform: scale(1.05);
+}
+
+.cultural-card h4 {
+    margin: 15px;
+    color: #2c3e50;
+}
+
+.cultural-card p {
+    color: #7f8c8d;
+    font-size: 14px;
+    margin: 0 15px 10px 15px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 28px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: #333;
+}
+
+.cultural-details img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.cultural-details h2 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+.cultural-details h3 {
+    margin: 25px 0 10px;
+    color: #9b59b6; /* Matching purple accent */
+    font-size: 20px;
+}
+
+.cultural-details p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.cultural-details strong {
+    color: #2c3e50;
+}
+
+/* Special styling for events */
+.cultural-details .events {
+    background-color: #f9f0ff;
+    padding: 10px 15px;
+    border-left: 4px solid #9b59b6;
+    margin: 15px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cultural-hero h2 {
+        font-size: 1.8rem;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .cultural-grid-section {
+        padding: 30px 20px;
+    }
+
+    .cultural-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .cultural-details h2 {
+        font-size: 24px;
+    }
+
+    .cultural-details h3 {
+        font-size: 18px;
+    }
+}
+
+/* Modal animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Small screen tweaks */
+@media (max-width: 600px) {
+    .cultural-details img {
+        max-height: 250px;
+    }
+
+    .cultural-details h2 {
+        font-size: 22px;
+    }
+
+    .cultural-details h3 {
+        font-size: 18px;
+    }
+
+    .cultural-details p {
+        font-size: 14px;
+    }
+}
+ /* Footer */
+ .site-footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 60px 0 20px;
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .footer-logo h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  
+  .footer-logo p {
+    color: #bdc3c7;
+    line-height: 1.6;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-links li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-links a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .footer-links a:hover {
+    color: white;
+  }
+  
+  .footer-social {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .footer-social a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+  }
+  
+  .footer-social a:hover {
+    color: #3498db;
+  }
+  
+  .copyright {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #bdc3c7;
+    font-size: 0.9rem;
+  }
+  
+  .cultural-hero {
+    position: relative;
+    height: 60vh;
+    background: #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.5s ease;
+  }
+  
+  .kathakali-eyes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 60%, #000 100%);
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    max-width: 800px;
+    transition: transform 0.5s ease;
+  }
+  
+  .cultural-hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    transition: all 0.5s ease;
+  }
+  
+  .search-container {
+    display: flex;
+    justify-content: center;
+    transition: all 0.5s ease;
+  }
+  
+  /* Kathakali Eye Elements */
+  .kathakali-eyes::before,
+  .kathakali-eyes::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 80px;
+    height: 40px;
+    background: #000;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(255,50,0,0.8);
+  }
+  
+  .kathakali-eyes::before {
+    left: calc(50% - 100px);
+    transform: translateY(-50%);
+  }
+  
+  .kathakali-eyes::after {
+    right: calc(50% - 100px);
+    transform: translateY(-50%);
+  }
+  
+  /* Colorful Facial Paint Expansion */
+  .kathakali-eyes::before {
+    animation: eyePulseLeft 8s infinite;
+  }
+  
+  .kathakali-eyes::after {
+    animation: eyePulseRight 8s infinite;
+  }
+  
+  @keyframes eyePulseLeft {
+    0%, 100% { box-shadow: 0 0 30px rgba(255,50,0,0.8); }
+    50% { box-shadow: 0 0 50px rgba(255,50,0,0.6), 
+                      -50px -30px 0 rgba(0,150,255,0.4),
+                      -100px -60px 0 rgba(255,215,0,0.3); }
+  }
+  
+  @keyframes eyePulseRight {
+    0%, 100% { box-shadow: 0 0 30px rgba(255,50,0,0.8); }
+    50% { box-shadow: 0 0 50px rgba(255,50,0,0.6), 
+                      50px -30px 0 rgba(0,150,255,0.4),
+                      100px -60px 0 rgba(255,215,0,0.3); }
+  }
+  
+  /* Hover Effects */
+  .cultural-hero:hover .kathakali-eyes {
+    opacity: 1;
+  }
+  
+  .cultural-hero:hover .hero-content {
+    transform: scale(1.05);
+  }
+  
+  .cultural-hero:hover h2 {
+    color: #ffcc00;
+    text-shadow: 0 0 20px rgba(255,204,0,0.7);
+  }
+  
+  /* Blinking Animation */
+  @keyframes blink {
+    0%, 48%, 52%, 100% { height: 40px; }
+    50% { height: 5px; }
+  }
+  
+  .cultural-hero:hover .kathakali-eyes::before,
+  .cultural-hero:hover .kathakali-eyes::after {
+    animation: blink 3s infinite, 
+               eyePulseLeft 8s infinite;
+  }
+  footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+  
+  .footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #2c3e50; /* Temple gold */
+    color: #e7c908; /* Deep brown text */
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Sacred Hover Effects */
+  .footer-social a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+    color: white;
+  }
+  
+  /* Temple Lamp Glow Effect */
+  .footer-social a:hover::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  
+  /* Individual Platform Colors */
+  .footer-social a:hover:nth-child(1) { /* Facebook */
+    background: #3b5998;
+  }
+  
+  .footer-social a:hover:nth-child(2) { /* Twitter */
+    background: #1da1f2;
+  }
+  
+  .footer-social a:hover:nth-child(3) { /* Instagram */
+    background: #e1306c;
+  }
+  
+  /* Temple Bell Animation */
+  .footer-social a:active {
+    animation: templeBell 0.3s ease;
+  }
+  
+  @keyframes templeBell {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 480px) {
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      font-size: 0.9rem;
+    }
+  }

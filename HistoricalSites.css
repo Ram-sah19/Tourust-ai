@@ -1,0 +1,651 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Historical Hero Section */
+.historical-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('historical-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.historical-hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-container input {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px 0 0 30px;
+    font-size: 16px;
+}
+
+.search-container button {
+    padding: 12px 25px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.search-container button:hover {
+    background-color:#2980b9;
+}
+
+/* Historical Grid Section */
+.historical-grid-section {
+    padding: 50px;
+    background-color: white;
+}
+
+.historical-grid-section h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #2c3e50;
+}
+
+.historical-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.historical-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.historical-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.historical-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.historical-card:hover img {
+    transform: scale(1.05);
+}
+
+.historical-card h4 {
+    margin: 15px;
+    color: #2c3e50;
+}
+
+.historical-card p {
+    color: #7f8c8d;
+    font-size: 14px;
+    margin: 0 15px 10px 15px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 28px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: #333;
+}
+
+.historical-details img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.historical-details h2 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+.historical-details h3 {
+    margin: 25px 0 10px;
+    color: #8e44ad;
+    font-size: 20px;
+}
+
+.historical-details p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.historical-details strong {
+    color: #2c3e50;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .historical-hero h2 {
+        font-size: 1.8rem;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .historical-grid-section {
+        padding: 30px 20px;
+    }
+
+    .historical-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .historical-details h2 {
+        font-size: 24px;
+    }
+
+    .historical-details h3 {
+        font-size: 18px;
+    }
+}
+
+/* Modal animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Small screen tweaks */
+@media (max-width: 600px) {
+    .historical-details img {
+        max-height: 250px;
+    }
+
+    .historical-details h2 {
+        font-size: 22px;
+    }
+
+    .historical-details h3 {
+        font-size: 18px;
+    }
+
+    .historical-details p {
+        font-size: 14px;
+    }
+}
+
+/* Special styling for historical period */
+.historical-details .period {
+    color: #e67e22;
+    font-weight: bold;
+}
+
+/* Architectural highlights styling */
+.historical-details .highlights {
+    background-color: #f9f9f9;
+    padding: 10px 15px;
+    border-left: 4px solid #8e44ad;
+    margin: 15px 0;
+}
+.historical-hero {
+    position: relative;
+    height: 60vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('https://images.unsplash.com/photo-1580502304784-8985b7eb7260?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.5s ease;
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, rgba(0,0,0,0.8) 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    max-width: 800px;
+  }
+  
+  .historical-hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  }
+  
+  .search-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  #siteSearch {
+    padding: 12px 20px;
+    width: 70%;
+    max-width: 500px;
+    border: none;
+    border-radius: 30px 0 0 30px;
+    font-size: 1rem;
+  }
+  
+  #searchBtn {
+    padding: 12px 25px;
+    background: #d4af37;
+    color: #000;
+    border: none;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  #searchBtn:hover {
+    background: #f1c40f;
+  }
+  
+  /* Divine Hover Effects */
+  .historical-hero:hover {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                url('https://images.unsplash.com/photo-1580502304784-8985b7eb7260?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+  }
+  
+  .historical-hero:hover .hero-overlay {
+    opacity: 1;
+    animation: divineGlow 4s infinite alternate;
+  }
+  
+  @keyframes divineGlow {
+    0% {
+      background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, rgba(0,0,0,0.7) 70%);
+    }
+    100% {
+      background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, rgba(75,0,130,0.6) 70%);
+    }
+  }
+  
+  /* Add subtle floating particles effect */
+  .historical-hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4af37' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .historical-hero:hover::after {
+    opacity: 1;
+    animation: floatParticles 15s linear infinite;
+  }
+  
+  @keyframes floatParticles {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+    100% {
+      transform: translateY(-100px) translateX(20px);
+    }
+  } /* Footer */
+  .site-footer {
+     background-color: #2c3e50;
+     color: white;
+     padding: 60px 0 20px;
+   }
+   
+   .footer-content {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+     gap: 40px;
+     max-width: 1200px;
+     margin: 0 auto;
+     padding: 0 20px;
+   }
+   
+   .footer-logo h2 {
+     font-size: 1.8rem;
+     margin-bottom: 15px;
+   }
+   
+   .footer-logo p {
+     color: #bdc3c7;
+     line-height: 1.6;
+   }
+   
+   .footer-links ul {
+     list-style: none;
+     padding: 0;
+   }
+   
+   .footer-links li {
+     margin-bottom: 10px;
+   }
+   
+   .footer-links a {
+     color: #bdc3c7;
+     text-decoration: none;
+     transition: color 0.3s;
+   }
+   
+   .footer-links a:hover {
+     color: white;
+   }
+   
+   .footer-social {
+     display: flex;
+     gap: 20px;
+   }
+   
+   .footer-social a {
+     color: white;
+     font-size: 1.5rem;
+     transition: color 0.3s;
+   }
+   
+   .footer-social a:hover {
+     color: #3498db;
+   }
+   
+   .copyright {
+     text-align: center;
+     margin-top: 60px;
+     padding-top: 20px;
+     border-top: 1px solid rgba(255, 255, 255, 0.1);
+     color: #bdc3c7;
+     font-size: 0.9rem;
+   }/* 3D Hero Section Styles */
+ .hero-3d {
+     height: 500px;
+     perspective: 1000px;
+     position: relative;
+     overflow: hidden;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+ /* Base Styles */
+ body {
+     margin: 0;
+     font-family: 'Arial', sans-serif;
+     overflow-x: hidden;
+   }
+   
+   /* Hero Section with Temple Door Effect */
+   .hero {
+     height: 60vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     perspective: 1000px;
+     background: #000;
+   }
+   
+   .temple-doors {
+     position: relative;
+     width: 100%;
+     height: 100%;
+     display: flex;
+     overflow: hidden;
+   }
+   
+   .door {
+     position: absolute;
+     top: 0;
+     width: 50%;
+     height: 100%;
+     background-size: cover;
+     background-position: center;
+     transition: all 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+     z-index: 1;
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+   }
+   
+   .left-door {
+     left: 0;
+     transform-origin: left center;
+     border-right: 3px solid #d4af37;
+   }
+   
+   .right-door {
+     right: 0;
+     transform-origin: right center;
+     border-left: 3px solid #d4af37;
+   }
+   
+   .temple-doors:hover .left-door {
+     transform: rotateY(-120deg);
+   }
+   
+   .temple-doors:hover .right-door {
+     transform: rotateY(120deg);
+   }
+   
+   .door-content {
+     position: relative;
+     z-index: 2;
+     color: white;
+     text-align: center;
+     padding: 2rem;
+     opacity: 0;
+     transform: translateY(20px);
+     transition: all 0.8s ease 0.4s;
+     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+     width: 100%;
+     max-width: 800px;
+     margin: 0 auto;
+   }
+   
+   .temple-doors:hover .door-content {
+     opacity: 1;
+     transform: translateY(0);
+   }
+   
+   .door-content h2 {
+     font-size: 2.5rem;
+     margin-bottom: 2rem;
+     color: #f8f8f8;
+   }
+   
+   .search-container {
+     display: flex;
+     width: 100%;
+     max-width: 600px;
+     margin: 0 auto;
+   }
+   
+   .search-container input {
+     flex: 1;
+     padding: 1rem 1.5rem;
+     border: none;
+     border-radius: 50px 0 0 50px;
+     font-size: 1.1rem;
+     background: rgba(255, 255, 255, 0.9);
+   }
+   
+   .search-container input:focus {
+     outline: none;
+     box-shadow: 0 0 0 3px rgba(216, 179, 71, 0.5);
+   }
+   
+   .search-container button {
+     padding: 0 2rem;
+     background: #d4af37;
+     color: #222;
+     border: none;
+     border-radius: 0 50px 50px 0;
+     font-weight: bold;
+     font-size: 1.1rem;
+     cursor: pointer;
+     transition: all 0.3s ease;
+   }
+   
+   .search-container button:hover {
+     background: #f8d84b;
+   }
+   
+   /* Responsive Adjustments */
+   @media (max-width: 768px) {
+     .door-content h2 {
+       font-size: 1.8rem;
+     }
+     
+     .search-container {
+       max-width: 90%;
+     }
+   }footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+  
+  .footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #2c3e50; /* Temple gold */
+    color: #e7c908; /* Deep brown text */
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Sacred Hover Effects */
+  .footer-social a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+    color: white;
+  }
+  
+  /* Temple Lamp Glow Effect */
+  .footer-social a:hover::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  
+  /* Individual Platform Colors */
+  .footer-social a:hover:nth-child(1) { /* Facebook */
+    background: #3b5998;
+  }
+  
+  .footer-social a:hover:nth-child(2) { /* Twitter */
+    background: #1da1f2;
+  }
+  
+  .footer-social a:hover:nth-child(3) { /* Instagram */
+    background: #e1306c;
+  }
+  
+  /* Temple Bell Animation */
+  .footer-social a:active {
+    animation: templeBell 0.3s ease;
+  }
+  
+  @keyframes templeBell {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 480px) {
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      font-size: 0.9rem;
+    }
+  }

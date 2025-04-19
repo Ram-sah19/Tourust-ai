@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Temples | Discover Heritage Sites</title>
+  <link rel="stylesheet" href="explore.css"/>
+  <link rel="stylesheet" href="Temples.css"/>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <h1 class="logo">Discover Heritage Sites</h1>
+    <ul class="nav-links">
+      <li><a href="explore.html">Home</a></li>
+      <li><a href="explore.html">Categories</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><button class="explore-btn">Start Exploring</button></li>
+    </ul>
+  </nav>
+
+  <!-- Temple Hero with Divine Gradient Sweep -->
+<section class="temple-hero">
+  <div class="divine-sweep"></div>
+  <h2>Explore Sacred Temples of India</h2>
+  <div class="search-container">
+    <input type="text" placeholder="Search temples..." id="templeSearch"/>
+    <button id="searchBtn">Go</button>
+  </div>
+</section>
+
+
+
+  
+  <section class="categories">
+    <h3>Categories</h3>
+    <div class="category-grid">
+        <!-- Added button here -->
+        <button class="explore-temple-btn">Explore Temples</button>
+        <button class="explore-museum-btn">Explore Museums</button>
+        <button class="explore-historical-btn">Explore Historical Sites</button>
+        <button class="explore-cultural-btn">Explore Cultural Centers</button>
+        <button><i class="fas fa-map"></i> Maps & Navigation</button>
+
+    </div>
+</section>
+
+
+  <!-- Temple Grid Section -->
+  <section class="temple-grid-section">
+    <h3>Featured Temples</h3>
+    <div class="temple-grid" id="templeGrid">
+      <!-- Temple cards will be injected dynamically by JS -->
+    </div>
+  </section>
+
+  <!-- Temple Details Modal -->
+  <div id="templeModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="temple-details">
+        <h2 id="templeTitle">Temple Name</h2>
+        <img id="templeImage" src="" alt="Temple Image"/>
+        <p><strong><i class="fas fa-map-marker-alt"></i> Location:</strong> <span id="templeLocation"></span></p>
+        <p><strong><i class="fas fa-calendar-alt"></i> Best Time to Visit:</strong> <span id="templeBestTime"></span></p>
+        <h3>Special Highlights</h3>
+        <p id="templeHighlights"></p>
+        <h3>Nearby Attractions</h3>
+        <p id="templeNearby"></p>
+        <h3>About this Temple</h3>
+        <p id="templeDescription"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // === TEMPLE DATA ===
+      const templeData = [
+        {
+          name: "Meenakshi Amman Temple",
+          image: "image/madurai.jpeg",
+          location: "Madurai, Tamil Nadu",
+          besttime: "October to March",
+          highlights: "1,000 Pillar Hall, Golden Lotus Tank, Sculpted Gopurams",
+          nearby: "Thirumalai Nayak Palace (1km), Gandhi Museum (2km)",
+          description: "Spectacular temple dedicated to Goddess Meenakshi and Lord Sundareswarar, known for its colorful gopurams and annual Tirukalyanam festival."
+        },
+        {
+          name: "Sri Ranganathaswamy Temple",
+          image: "image/sri.jpeg",
+          location: "Tiruchirappalli, Tamil Nadu",
+          besttime: "November to February",
+          highlights: "Largest functioning Hindu temple, intricate carvings, 21 towers",
+          nearby: "Rockfort Temple (5km), Kallanai Dam (15km)",
+          description: "A sprawling temple complex on an island, it is a major Vaishnavite pilgrimage center and boasts Dravidian architecture."
+        },
+        {
+          name: "Brihadeeswarar Temple",
+          image: "image/aa.jpg",
+          location: "Thanjavur, Tamil Nadu",
+          besttime: "November to February",
+          highlights: "Tallest vimana, massive Nandi statue, Chola frescoes",
+          nearby: "Thanjavur Palace (2km), Saraswathi Mahal Library (3km)",
+          description: "Built by Raja Raja Chola I, this UNESCO World Heritage site exemplifies Chola architecture and grandeur."
+        },
+        {
+          name: "Kedarnath Temple",
+          image: "image/kedarnath.jpeg",
+          location: "Rudraprayag, Uttarakhand",
+          besttime: "May to October",
+          highlights: "Jyotirlinga shrine, scenic Himalayas, spiritual trek",
+          nearby: "Gaurikund, Bhairavnath Temple",
+          description: "One of the 12 Jyotirlingas, Kedarnath is nestled in the Himalayas and accessible only by a scenic trek."
+        },
+        {
+          name: "Somnath Temple",
+          image: "image/somnath.jpeg",
+          location: "Prabhas Patan, Gujarat",
+          besttime: "October to February",
+          highlights: "Historical Jyotirlinga site, sea-facing location",
+          nearby: "Triveni Sangam, Bhalka Tirth",
+          description: "Known for being destroyed and rebuilt several times, Somnath is a symbol of resilience and faith."
+        },
+        {
+          name: "Golden Temple (Harmandir Sahib)",
+          image: "image/golden.jpeg",
+          location: "Amritsar, Punjab",
+          besttime: "November to March",
+          highlights: "Golden facade, serene lake, langar service",
+          nearby: "Jallianwala Bagh, Wagah Border",
+          description: "A spiritual hub for Sikhs, the Golden Temple welcomes people of all faiths to its peaceful, reflective premises."
+        },
+        {
+          name: "Sun Temple",
+          image: "image/sun.jpeg",
+          location: "Konark, Odisha",
+          besttime: "October to February",
+          highlights: "Chariot-shaped structure, UNESCO site, detailed carvings",
+          nearby: "Chandrabhaga Beach, Puri",
+          description: "A marvel of ancient engineering, the Sun Temple is shaped like a giant chariot with intricately carved wheels and horses."
+        },
+        {
+          name: "Akshardham Temple",
+          image: "image/place.jpeg",
+          location: "Delhi, India",
+          besttime: "October to March",
+          highlights: "Grand architecture, light shows, spiritual exhibitions",
+          nearby: "Lotus Temple, India Gate",
+          description: "Modern marvel showcasing India's spiritual heritage through architecture, culture, and technology."
+        }
+      ];
+
+      // === LOAD TEMPLE CARDS ===
+      const templeGrid = document.getElementById("templeGrid");
+      if (templeGrid) {
+        templeData.forEach(temple => {
+          const card = document.createElement("div");
+          card.className = "temple-card";
+          
+          // Set all data attributes
+          card.dataset.name = temple.name;
+          card.dataset.image = temple.image;
+          card.dataset.location = temple.location;
+          card.dataset.besttime = temple.besttime;
+          card.dataset.highlights = temple.highlights;
+          card.dataset.nearby = temple.nearby;
+          card.dataset.description = temple.description;
+
+          card.innerHTML = `
+            <img src="${temple.image}" alt="${temple.name}">
+            <h4>${temple.name}</h4>
+            <p><i class="fas fa-map-marker-alt"></i> ${temple.location}</p>
+            <p><i class="fas fa-calendar-alt"></i> Best time: ${temple.besttime}</p>
+          `;
+
+          templeGrid.appendChild(card);
+        });
+      }
+
+      // === MODAL FUNCTIONALITY ===
+      const modal = document.getElementById("templeModal");
+      if (modal) {
+        const closeBtn = modal.querySelector(".close");
+        
+        // Add click event to all temple cards
+        document.querySelectorAll(".temple-card").forEach(card => {
+          card.addEventListener("click", function() {
+            // Populate modal with data from clicked card
+            document.getElementById("templeTitle").textContent = this.dataset.name;
+            document.getElementById("templeImage").src = this.dataset.image;
+            document.getElementById("templeLocation").textContent = this.dataset.location;
+            document.getElementById("templeBestTime").textContent = this.dataset.besttime;
+            document.getElementById("templeHighlights").textContent = this.dataset.highlights;
+            document.getElementById("templeNearby").textContent = this.dataset.nearby;
+            document.getElementById("templeDescription").textContent = this.dataset.description;
+            
+            // Show modal
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden";
+          });
+        });
+
+        // Close modal when clicking X button
+        if (closeBtn) {
+          closeBtn.addEventListener("click", function() {
+            modal.style.display = "none";
+            document.body.style.overflow = "";
+          });
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener("click", function(event) {
+          if (event.target === modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = "";
+          }
+        });
+      }
+
+      // === SEARCH FUNCTIONALITY ===
+      const searchInput = document.getElementById("templeSearch");
+      const searchBtn = document.getElementById("searchBtn");
+
+      function searchTemples() {
+        const query = searchInput.value.toLowerCase().trim();
+        const cards = document.querySelectorAll(".temple-card");
+        
+        cards.forEach(card => {
+          const name = card.dataset.name.toLowerCase();
+          const location = card.dataset.location.toLowerCase();
+          const highlights = card.dataset.highlights.toLowerCase();
+          
+          if (name.includes(query) || location.includes(query) || highlights.includes(query)) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      }
+
+      if (searchBtn && searchInput) {
+        searchBtn.addEventListener("click", searchTemples);
+        searchInput.addEventListener("keyup", function(e) {
+          if (e.key === "Enter") searchTemples();
+        });
+      }
+    });
+  </script>
+  <script src="ra.js"></script>
+   
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h2>Discover Heritage Sites</h2>
+        <p>Exploring cultural heritage through technology</p>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2023 Discover Heritage Sites. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

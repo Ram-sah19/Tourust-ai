@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Heritage Sites</title>
+    <link rel="stylesheet" href="explore.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <h1 class="logo">
+        <img src="" alt="">Discover Heritage Sites</h1>
+      
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><button class="explore-btn">Start Exploring</button></li>
+        </ul>
+    </nav>
+
+     <!-- Hero Section with Temple Door Effect -->
+  <section class="hero">
+    <div class="temple-doors">
+      <div class="door left-door" style="background-image: url('https://images.unsplash.com/photo-1580077873521-dc86339c35c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+      <div class="door right-door" style="background-image: url('https://images.unsplash.com/photo-1580077873521-dc86339c35c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+      <div class="door-content">
+        <h2>Your ultimate heritage exploration companion. Discover. Learn.</h2>
+        <div class="search-container">
+          <input type="text" placeholder="Search for heritage temples">
+          <button>Enter</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <h3>Categories</h3>
+        <div class="category-grid">
+            <!-- Added button here -->
+            <button class="explore-temple-btn">Explore Temples</button>
+            <button class="explore-museum-btn">Explore Museums</button>
+            <button class="explore-historical-btn">Explore Historical Sites</button>
+            <button class="explore-cultural-btn">Explore Cultural Centers</button>
+            <button><i class="fas fa-map"></i> Maps & Navigation</button>
+
+        </div>
+    </section>
+
+    <!-- Recent Activity Section -->
+    <section class="recent">
+        <h3>Recent</h3>
+        <div class="recent-grid">
+            <div class="card" data-place="Ancient Temple" 
+                 data-image="image/temple.jpeg" 
+                 data-user="Saravanan"
+                 data-location="Madurai, Tamil Nadu"
+                 data-highlights="1000-pillared hall, Intricate stone carvings, Evening light show"
+                 data-nearby="Gandhi Museum (1km), Meenakshi Amman Temple (500m)"
+                 data-description="This ancient temple dates back to the 12th century and features remarkable Dravidian architecture. The main deity is Lord Shiva, and the temple is famous for its 1000-pillared hall and intricate stone carvings depicting scenes from Hindu mythology. The temple comes alive in the evenings with a spectacular light and sound show that narrates its history.">
+                <img src="image/temple.jpeg" alt="Temple" class="place-image">
+                <h4>Saravanan</h4>
+                <p>discovered Ancient Temple</p>
+                <p>“The intricate carvings and architecture left me in awe. A must-visit!”</p>
+            </div>
+            <div class="card" data-place="Colonial Mansion" 
+                 data-image="image/mansion.jpeg" 
+                 data-user="Priya"
+                 data-location="Kolkata, West Bengal"
+                 data-highlights="Original colonial furniture, Governor's private chambers, Vintage photographs"
+                 data-nearby="Victoria Memorial (2km), Indian Museum (3km)"
+                 data-description="Built in 1857, this colonial mansion was the residence of a British governor. It now serves as a museum showcasing colonial-era artifacts, furniture, and historical documents. The architecture blends British and local styles, with wide verandas and high ceilings. The mansion's ballroom still hosts occasional cultural events, maintaining its historical charm.">
+                <img src="image/mansion.jpeg" alt="Mansion" class="place-image">
+                <h4>Priya</h4>
+                <p>explored Colonial Mansion</p>
+                <p>“A glimpse into the past. Fascinating history preserved beautifully.”</p>
+            </div>
+            <div class="card" data-place="Heritage Site" 
+                 data-image="image/aaman.jpeg" 
+                 data-user="Lorem Ipsum"
+                 data-location="Hampi, Karnataka"
+                 data-highlights="Stone chariot, Elephant stables, Lotus Mahal"
+                 data-nearby="Virupaksha Temple (500m), Tungabhadra River (1km)"
+                 data-description="This heritage complex includes several historical buildings from different periods, offering a comprehensive view of regional architectural evolution. The site features interactive exhibits and augmented reality experiences that bring the ancient Vijayanagara Empire to life. Don't miss the musical pillars in the main temple that produce different notes when tapped.">
+                <img src="image/aaman.jpeg" alt="Heritage" class="place-image">
+                <h4>Lorem Ipsum</h4>
+                <p>explore Heritage Sites</p>
+                <p>“AI-powered multilingual voice guide for heritage exploration.”</p>
+            </div>
+            <div class="card" data-place="Heritage Fort" 
+                 data-image="image/images.jpeg" 
+                 data-user="Heritage Explorer"
+                 data-location="Jaipur, Rajasthan"
+                 data-highlights="Mirror work, Cannon views, Secret passages"
+                 data-nearby="City Palace (3km), Jantar Mantar (4km)"
+                 data-description="This majestic fort stands atop a hill, offering panoramic views of the Pink City. Built in the 16th century, it features intricate mirror work in its palaces and several secret passages used by royalty during emergencies. The fort's museum houses an impressive collection of royal artifacts and weaponry.">
+                <img src="image/images.jpeg" alt="Fort" class="place-image">
+                <h4>Heritage Explorer</h4>
+                <p>discovered Heritage Fort</p>
+                <p>“The sunset views from the fort walls are absolutely breathtaking.”</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Place Details Modal -->
+    <div id="placeModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="place-details">
+                <h2 id="placeTitle">Place Title</h2>
+                <img id="placeImage" src="" alt="Place Image">
+                <p><strong>Location:</strong> <span id="placeLocation"></span></p>
+                <p><strong>Shared by:</strong> <span id="placeUser">User</span></p>
+                <p id="placeReview">User review</p>
+                <h3>Special Highlights</h3>
+                <p id="placeHighlights"></p>
+                <h3>Nearby Attractions</h3>
+                <p id="placeNearby"></p>
+                <h3>About this place</h3>
+                <p id="placeDescription">Detailed description will appear here</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="ra.js"></script>
+    
+ 
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h2>Discover Heritage Sites</h2>
+        <p>Exploring cultural heritage through technology</p>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2023 Discover Heritage Sites. All rights reserved.</p>
+    </div>
+  </footer>
+    
+</body>
+</html>

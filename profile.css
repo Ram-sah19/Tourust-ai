@@ -1,0 +1,617 @@
+/* Profile Page Styles */
+.profile-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('image/rambilas.jpg') no-repeat center center;
+    background-size: cover;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+  
+  .profile-hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .profile-hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .profile-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    gap: 2rem;
+  }
+  
+  .user-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 300px;
+    height: fit-content;
+    text-align: center;
+  }
+  
+  .user-avatar {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .edit-avatar-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .user-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .user-location {
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+  
+  .member-since {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .user-stats {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 0;
+  }
+  
+  .stat-item {
+    flex: 1;
+  }
+  
+  .stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4CAF50;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+    color: #666;
+  }
+  
+  .edit-profile-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+  }
+  
+  .profile-content {
+    flex: 1;
+  }
+  
+  .profile-tabs {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1.5rem;
+  }
+  
+  .tab-btn {
+    padding: 0.75rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    position: relative;
+  }
+  
+  .tab-btn.active {
+    font-weight: bold;
+    color: #4CAF50;
+  }
+  
+  .tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #4CAF50;
+  }
+  
+  .tab-content {
+    display: none;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }
+  
+  .site-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .site-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .site-img {
+    position: relative;
+    height: 180px;
+  }
+  
+  .site-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .visited-date, .saved-date {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  .site-info {
+    padding: 1rem;
+  }
+  
+  .site-info h4 {
+    margin: 0 0 0.25rem;
+    font-size: 1.1rem;
+  }
+  
+  .site-location {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .rating {
+    color: #FFC107;
+    margin-bottom: 0.5rem;
+  }
+  
+  .rating span {
+    color: #333;
+    margin-left: 0.5rem;
+  }
+  
+  .site-desc {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0.5rem 0 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .view-btn, .remove-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
+  .view-btn {
+    background: #4CAF50;
+    color: white;
+    margin-right: 0.5rem;
+  }
+  
+  .remove-btn {
+    background: #f5f5f5;
+    color: #666;
+  }
+  
+  .contributions-list {
+    margin-top: 1rem;
+  }
+  
+  .contribution-item {
+    display: flex;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    gap: 1rem;
+  }
+  
+  .contribution-icon {
+    width: 40px;
+    height: 40px;
+    background: #f5f5f5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4CAF50;
+  }
+  
+  .contribution-details {
+    flex: 1;
+  }
+  
+  .contribution-details h4 {
+    margin: 0 0 0.25rem;
+    font-size: 1rem;
+  }
+  
+  .contribution-date {
+    color: #888;
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .contribution-status {
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+  
+  .contribution-status.approved {
+    background: #E8F5E9;
+    color: #2E7D32;
+  }
+  
+  .contribution-status.pending {
+    background: #FFF8E1;
+    color: #FF8F00;
+  }
+  
+  .badges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .badge-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+    opacity: 0.7;
+  }
+  
+  .badge-card.earned {
+    opacity: 1;
+    border: 2px solid #4CAF50;
+  }
+  
+  .badge-icon {
+    font-size: 2.5rem;
+    color: #4CAF50;
+    margin-bottom: 1rem;
+  }
+  
+  .badge-info h4 {
+    margin: 0 0 0.5rem;
+  }
+  
+  .badge-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .progress {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 0.5rem !important;
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+  }
+  
+  .modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+  }
+  
+  .close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .edit-profile-form .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .edit-profile-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .edit-profile-form input,
+  .edit-profile-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .edit-profile-form textarea {
+    resize: vertical;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .cancel-btn, .save-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .cancel-btn {
+    background: #f5f5f5;
+    color: #666;
+  }
+  
+  .save-btn {
+    background: #4CAF50;
+    color: white;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .profile-container {
+      flex-direction: column;
+    }
+    
+    .user-card {
+      width: 100%;
+    }
+    
+    .profile-tabs {
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    
+    .site-grid, .badges-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  /* Site Popup Styles */
+.site-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.popup-content {
+  background-color: #fff;
+  margin: 5% auto;
+  width: 80%;
+  max-width: 900px;
+  border-radius: 8px;
+  box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+  animation: popupFadeIn 0.3s ease-out;
+}
+
+@keyframes popupFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.popup-header {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  padding: 20px;
+}
+
+.popup-header img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.popup-title {
+  padding-left: 20px;
+  flex-grow: 1;
+}
+
+.popup-title h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.popup-title p {
+  margin: 5px 0 10px;
+  color: #666;
+}
+
+.popup-rating {
+  color: #ffc107;
+}
+
+.popup-body {
+  display: flex;
+  padding: 20px;
+}
+
+.popup-details {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.popup-details h4 {
+  margin-top: 0;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.site-facts {
+  display: flex;
+  margin: 20px 0;
+  gap: 15px;
+}
+
+.fact-item {
+  display: flex;
+  align-items: center;
+  background: #f8f8f8;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.fact-item i {
+  margin-right: 5px;
+  color: #6e3b07;
+}
+
+.popup-gallery {
+  width: 300px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+.popup-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px 20px;
+  border-top: 1px solid #eee;
+  gap: 10px;
+}
+
+.popup-btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.save-btn {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.save-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.share-btn {
+  background-color: #6e3b07;
+  color: white;
+}
+
+.share-btn:hover {
+  background-color: #5a2f06;
+}
+
+.close-popup {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.8rem;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-popup:hover {
+  color: #333;
+}

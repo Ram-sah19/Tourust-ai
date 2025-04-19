@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Museums | Discover Heritage Sites</title>
+  <link rel="stylesheet" href="explore.css"/>
+  <link rel="stylesheet" href="Museums.css"/>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <h1 class="logo">Discover Heritage Sites</h1>
+    <ul class="nav-links">
+      <li><a href="explore.html">Home</a></li>
+      <li><a href="explore.html">Categories</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><button class="explore-btn">Start Exploring</button></li>
+    </ul>
+  </nav>
+<!-- Museum Hero Section with Kathakali Eye Effect -->
+<section class="museum-hero" id="kathakaliEyeHero">
+  <div class="kathakali-eyes"></div>
+  <div class="hero-content">
+    <h2>Explore Iconic Museums of South India</h2>
+    <div class="search-container">
+      <input type="text" placeholder="Search museums..." id="museumSearch"/>
+      <button id="searchBtn">Go</button>
+    </div>
+  </div>
+</section>
+
+  <section class="categories">
+    <h3>Categories</h3>
+    <div class="category-grid">
+        <!-- Added button here -->
+        <button class="explore-temple-btn">Explore Temples</button>
+        <button class="explore-museum-btn">Explore Museums</button>
+        <button class="explore-historical-btn">Explore Historical Sites</button>
+        <button class="explore-cultural-btn">Explore Cultural Centers</button>
+        <button><i class="fas fa-map"></i> Maps & Navigation</button>
+
+    </div>
+</section>
+
+  <!-- Museum Grid Section -->
+  <section class="museum-grid-section">
+    <h3>Featured Museums</h3>
+    <div class="museum-grid" id="museumGrid">
+      <!-- Museum cards will be injected dynamically by JS -->
+    </div>
+  </section>
+
+  <!-- Museum Details Modal -->
+  <div id="museumModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="museum-details">
+        <h2 id="museumTitle">Museum Name</h2>
+        <img id="museumImage" src="" alt="Museum Image"/>
+        <p><strong><i class="fas fa-map-marker-alt"></i> Location:</strong> <span id="museumLocation"></span></p>
+        <p><strong><i class="fas fa-calendar-alt"></i> Best Time to Visit:</strong> <span id="museumBestTime"></span></p>
+        <h3>Special Highlights</h3>
+        <p id="museumHighlights"></p>
+        <h3>Nearby Attractions</h3>
+        <p id="museumNearby"></p>
+        <h3>About this Museum</h3>
+        <p id="museumDescription"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // === MUSEUM DATA ===
+      const museumData = [
+      {
+            name: "Indian Museum, Kolkata",
+            image: "museums/indian.jpeg",
+            location: "Kolkata, West Bengal",
+            besttime: "October to March",
+            highlights: "Egyptian mummies, fossils, Mughal paintings",
+            nearby: "Victoria Memorial, St. Paul's Cathedral",
+            description: "Established in 1814, it's the oldest and largest museum in India, known for its rare artifacts ranging from ancient sculptures to natural history specimens."
+          },
+          {
+            name: "National Museum, New Delhi",
+            image: "museums/National-Museum.jpeg",
+            location: "New Delhi, Delhi",
+            besttime: "October to March",
+            highlights: "Indus Valley artifacts, Buddha relics, miniature paintings",
+            nearby: "India Gate, Rashtrapati Bhavan",
+            description: "One of India's premier cultural institutions, offering a deep dive into over 5,000 years of heritage, including ancient, medieval, and modern collections."
+          },
+          {
+            name: "Chhatrapati Shivaji Maharaj Vastu Sangrahalaya",
+            image: "museums/Chhatrapati.jpeg",
+            location: "Mumbai, Maharashtra",
+            besttime: "November to February",
+            highlights: "Ancient sculptures, decorative arts, European paintings",
+            nearby: "Gateway of India, Marine Drive",
+            description: "An Indo-Saracenic architectural gem, this museum houses art, archaeology, and natural history collections from across India and beyond."
+          },
+          {
+            name: "Salar Jung Museum",
+            image: "museums/Salar.jpeg",
+            location: "Hyderabad, Telangana",
+            besttime: "October to March",
+            highlights: "Veiled Rebecca statue, global art collection",
+            nearby: "Charminar, Mecca Masjid",
+            description: "One of India's largest museums, known for its diverse collection including rare European, Middle Eastern, and Asian artifacts."
+          },
+          {
+            name: "Government Museum, Chennai",
+            image: "museums/Gov.jpeg",
+            location: "Chennai, Tamil Nadu",
+            besttime: "November to February",
+            highlights: "Bronze Gallery, Amaravathi Sculptures, Natural History",
+            nearby: "Egmore Station, Spencer Plaza",
+            description: "Established in 1851, this is the second oldest museum in India with an extensive collection of archaeological and numismatic artifacts."
+          },
+          {
+            name: "Napier Museum",
+            image: "museums/Napier.jpeg",
+            location: "Thiruvananthapuram, Kerala",
+            besttime: "October to March",
+            highlights: "Kerala chariots, ivory carvings, bronze idols",
+            nearby: "Zoo, Kanakakunnu Palace",
+            description: "A 19th-century Indo-Saracenic building with rare historical artifacts and traditional Kerala architecture."
+          },
+          {
+            name: "Shankar's International Dolls Museum",
+            image: "museums/s.jpg",
+            location: "New Delhi, Delhi",
+            besttime: "October to March",
+            highlights: "Collection of dolls from over 85 countries",
+            nearby: "Pragati Maidan, India Gate",
+            description: "A delightful museum for all ages showcasing a huge variety of costume dolls from around the world, representing international traditions and cultures."
+          },
+          {
+            name: "Rail Museum, New Delhi",
+            image: "museums/Rail.jpeg",
+            location: "New Delhi, Delhi",
+            besttime: "October to March",
+            highlights: "Vintage locomotives, royal carriages, toy train",
+            nearby: "Chanakyapuri, Nehru Park",
+            description: "A fascinating open-air museum dedicated to the history of Indian Railways, featuring historic locomotives, engines, and memorabilia."
+          }
+
+      ];
+
+      // === LOAD MUSEUM CARDS ===
+      const museumGrid = document.getElementById("museumGrid");
+      if (museumGrid) {
+        museumData.forEach(museum => {
+          const card = document.createElement("div");
+          card.className = "card museum-card";
+          
+          // Set all data attributes
+          card.dataset.name = museum.name;
+          card.dataset.image = museum.image;
+          card.dataset.location = museum.location;
+          card.dataset.besttime = museum.besttime;
+          card.dataset.highlights = museum.highlights;
+          card.dataset.nearby = museum.nearby;
+          card.dataset.description = museum.description;
+
+          card.innerHTML = `
+            <img src="${museum.image}" alt="${museum.name}">
+            <h4>${museum.name}</h4>
+            <p><i class="fas fa-map-marker-alt"></i> ${museum.location}</p>
+            <p><i class="fas fa-calendar-alt"></i> Best time: ${museum.besttime}</p>
+          `;
+
+          museumGrid.appendChild(card);
+        });
+      }
+
+      // === MODAL FUNCTIONALITY ===
+      const modal = document.getElementById("museumModal");
+      if (modal) {
+        const closeBtn = modal.querySelector(".close");
+        
+        // Add click event to all museum cards
+        document.querySelectorAll(".museum-card").forEach(card => {
+          card.addEventListener("click", function() {
+            // Populate modal with data from clicked card
+            document.getElementById("museumTitle").textContent = this.dataset.name;
+            document.getElementById("museumImage").src = this.dataset.image;
+            document.getElementById("museumLocation").textContent = this.dataset.location;
+            document.getElementById("museumBestTime").textContent = this.dataset.besttime;
+            document.getElementById("museumHighlights").textContent = this.dataset.highlights;
+            document.getElementById("museumNearby").textContent = this.dataset.nearby;
+            document.getElementById("museumDescription").textContent = this.dataset.description;
+            
+            // Show modal
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden";
+          });
+        });
+
+        // Close modal when clicking X button
+        if (closeBtn) {
+          closeBtn.addEventListener("click", function() {
+            modal.style.display = "none";
+            document.body.style.overflow = "";
+          });
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener("click", function(event) {
+          if (event.target === modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = "";
+          }
+        });
+      }
+
+      // === SEARCH FUNCTIONALITY ===
+      const searchInput = document.getElementById("museumSearch");
+      const searchBtn = document.getElementById("searchBtn");
+
+      function searchMuseums() {
+        const query = searchInput.value.toLowerCase().trim();
+        const cards = document.querySelectorAll(".museum-card");
+        
+        cards.forEach(card => {
+          const name = card.dataset.name.toLowerCase();
+          const location = card.dataset.location.toLowerCase();
+          const highlights = card.dataset.highlights.toLowerCase();
+          
+          if (name.includes(query) || location.includes(query) || highlights.includes(query)) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      }
+
+      if (searchBtn && searchInput) {
+        searchBtn.addEventListener("click", searchMuseums);
+        searchInput.addEventListener("keyup", function(e) {
+          if (e.key === "Enter") searchMuseums();
+        });
+      }
+    });
+  </script>
+  <script src="ra.js"></script>
+ <script>
+  // Optional: Add traditional Chenda drum sound on hover
+  document.getElementById('kathakaliEyeHero').addEventListener('mouseenter', function() {
+    // Uncomment to add sound (need audio file)
+    // const chendaSound = new Audio('chenda-drum.mp3');
+    // chendaSound.volume = 0.3;
+    // chendaSound.play();
+    
+    // Add dramatic text color shift
+    const h2 = this.querySelector('h2');
+    h2.style.transition = 'color 0.3s ease';
+    h2.style.color = '#ff3300';
+    
+    setTimeout(() => {
+      h2.style.color = '#ffcc00';
+    }, 300);
+  });
+</script>
+   
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h2>Discover Heritage Sites</h2>
+        <p>Exploring cultural heritage through technology</p>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2023 Discover Heritage Sites. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cultural Centres | Discover Heritage Sites</title>
+  <link rel="stylesheet" href="explore.css"/>
+  <link rel="stylesheet" href="CulturalCentres.css"/>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <h1 class="logo">Discover Heritage Sites</h1>
+    <ul class="nav-links">
+      <li><a href="explore.html">Home</a></li>
+      <li><a href="explore.html">Categories</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><button class="explore-btn">Start Exploring</button></li>
+    </ul>
+  </nav>
+  
+<!-- Culture Hero Section with Kathakali Eye Effect -->
+<section class="cultural-hero" id="kathakaliEyeHero">
+  <div class="kathakali-eyes"></div>
+  <div class="hero-content">
+    <h2>Experience South India's Vibrant Cultural Centres</h2>
+    <div class="search-container">
+      <input type="text" placeholder="Search cultural..." id="museumSearch"/>
+      <button id="searchBtn">Go</button>
+    </div>
+  </div>
+</section>
+</section>
+
+  <section class="categories">
+    <h3>Categories</h3>
+    <div class="category-grid">
+        <!-- Added button here -->
+        <button class="explore-temple-btn">Explore Temples</button>
+        <button class="explore-museum-btn">Explore Museums</button>
+        <button class="explore-historical-btn">Explore Historical Sites</button>
+        <button class="explore-cultural-btn">Explore Cultural Centers</button>
+        <button><i class="fas fa-map"></i> Maps & Navigation</button>
+    </div>
+</section>
+
+
+  <!-- Cultural Centre Grid Section -->
+  <section class="cultural-grid-section">
+    <h3>Featured Cultural Centres</h3>
+    <div class="cultural-grid" id="culturalGrid">
+      <!-- Cultural centre cards will be injected dynamically by JS -->
+    </div>
+  </section>
+
+  <!-- Cultural Centre Details Modal -->
+  <div id="culturalModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="cultural-details">
+        <h2 id="culturalTitle">Cultural Centre Name</h2>
+        <img id="culturalImage" src="" alt="Cultural Centre Image"/>
+        <p><strong><i class="fas fa-map-marker-alt"></i> Location:</strong> <span id="culturalLocation"></span></p>
+        <p><strong><i class="fas fa-calendar-alt"></i> Best Time to Visit:</strong> <span id="culturalBestTime"></span></p>
+        <p><strong><i class="fas fa-clock"></i> Opening Hours:</strong> <span id="culturalHours"></span></p>
+        <h3>Cultural Highlights</h3>
+        <p id="culturalHighlights"></p>
+        <h3>Upcoming Events</h3>
+        <div id="culturalEvents"></div>
+        <h3>Nearby Attractions</h3>
+        <p id="culturalNearby"></p>
+        <h3>About this Centre</h3>
+        <p id="culturalDescription"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // === CULTURAL CENTRE DATA ===
+      const culturalData = [
+          {
+            name: "Kalakshetra Foundation",
+            image: "culture/kal.jpeg",
+            location: "Chennai, Tamil Nadu",
+            besttime: "Year-round (especially December-January)",
+            hours: "9:00 AM - 5:30 PM (Closed Sundays)",
+            highlights: "Bharatanatyam performances, Traditional crafts, Music concerts",
+            events: {
+              MargazhiFestival: {
+                date: "December 15 - January 15 annually",
+                description: "Month-long celebration of classical music and dance during Tamil month of Margazhi, featuring early morning concerts (Kutcheris) and dance recitals by top artists."
+              },
+              AnnualCraftFair: {
+                date: "January 20-30 annually",
+                description: "Showcase of traditional South Indian crafts like Thanjavur paintings, Chettinad textiles, and temple jewelry with live demonstrations."
+              }
+            },
+            nearby: "Besant Nagar Beach, Ashtalakshmi Temple",
+            description: "Founded in 1936, Kalakshetra is a premier institution for preserving traditional Indian arts, especially Bharatanatyam. The campus includes performance spaces, craft demonstration areas, and beautiful gardens."
+          },
+          {
+            name: "Kerala Kalamandalam",
+            image: "culture/kera.jpeg",
+            location: "Thrissur, Kerala",
+            besttime: "September to March",
+            hours: "8:30 AM - 6:00 PM",
+            highlights: "Kathakali training, Mohiniyattam, Traditional Kerala percussion",
+            events: {
+              KathakaliNightPerformances: {
+                date: "Daily at 6:00 PM",
+                description: "Authentic 3-hour Kathakali performances featuring elaborate makeup, costumes, and traditional storytelling through mudras (hand gestures)."
+              },
+              KeralaArtsFestival: {
+                date: "February 1-7 annually",
+                description: "Week-long celebration of Kerala's classical arts including Mohiniyattam, Theyyam, and traditional percussion ensembles (Panchavadyam)."
+              }
+            },
+            nearby: "Vadakkunnathan Temple, Athirappilly Falls",
+            description: "A deemed university for arts and culture, Kalamandalam is the cradle of Kerala's classical arts. Visitors can observe training sessions and enjoy authentic Kathakali performances."
+          },
+          {
+            name: "Nrityagram Dance Village",
+            image: "culture/Nri.jpeg",
+            location: "Bengaluru, Karnataka",
+            besttime: "October to February",
+            hours: "10:00 AM - 5:00 PM (Closed Mondays)",
+            highlights: "Odissi dance, Gurukul system, Open-air theatre",
+            events: {
+              VasanthaHabba: {
+                date: "February full moon weekend",
+                description: "3-day celebration of dance and music under flowering trees, featuring Odissi, Bharatanatyam, and folk performances at sunset."
+              },
+              Nrityotsava: {
+                date: "November 10-15 annually",
+                description: "Annual dance festival attracting India's top classical dancers for evening performances in the open-air amphitheater."
+              }
+            },
+            nearby: "Hesaraghatta Lake, ISKCON Temple",
+            description: "India's first modern gurukul for Indian classical dances, this self-contained community offers residential programs and stunning performances in a serene environment."
+          },
+          {
+            name: "Salar Jung Museum Cultural Wing",
+            image: "museums/Salar.jpeg",
+            location: "Hyderabad, Telangana",
+            besttime: "November to February",
+            hours: "10:00 AM - 5:00 PM (Closed Fridays)",
+            highlights: "Deccani art, Mughal miniature paintings, Cultural workshops",
+            events: {
+              DeccanHeritageFestival: {
+                date: "January 26-30 annually",
+                description: "Celebration of Hyderabadi culture with Qawwali performances, Mughal miniature painting workshops, and Bidri craft demonstrations."
+              },
+              BonaluFestival: {
+                date: "July/August (regional dates vary)",
+                description: "Traditional Telangana folk festival featuring goddess worship with rhythmic percussion and women balancing pots (special exhibitions during this period)."
+              }
+            },
+            nearby: "Charminar, Chowmahalla Palace",
+            description: "The cultural wing of this famous museum hosts regular performances and workshops showcasing Hyderabadi and Deccani cultural traditions."
+          },
+          {
+            name: "DakshinaChitra",
+            image: "museums/da.jpeg",
+            location: "Chennai (ECR Road), Tamil Nadu",
+            besttime: "November to March",
+            hours: "10:00 AM - 6:00 PM (Closed Tuesdays)",
+            highlights: "Living museum, Heritage homes, Crafts demonstrations",
+            events: {
+              PongalCelebration: {
+                date: "January 14-17 annually",
+                description: "4-day harvest festival featuring traditional Tamil activities like kolam drawing, jallikattu demonstrations, and cooking of sweet Pongal in clay pots."
+              },
+              FolkArtsFestival: {
+                date: "December 20-27 annually",
+                description: "Rare performances of Therukoothu (street theater), Karagattam (pot dance), and Villu Paatu (bow-song) by rural artist communities."
+              }
+            },
+            nearby: "VGP Golden Beach, Muttukadu Boat House",
+            description: "This cross-cultural living museum displays the art, architecture, crafts, and performing arts of South India through reconstructed heritage houses and artisan demonstrations."
+          },
+          {
+            name: "Rukmini Devi Museum",
+            image: "culture/Ruk.jpeg",
+            location: "Kalakshetra Campus, Chennai",
+            besttime: "December to February",
+            hours: "9:30 AM - 4:30 PM (Closed Sundays)",
+            highlights: "Dance artifacts, Costume gallery, Personal collections",
+            events: {
+              MargazhiExhibition: {
+                date: "December 15 - January 15 annually",
+                description: "Special display of Rukmini Devi's original Bharatanatyam costumes, jewelry designs, and rare photographs from early Kalakshetra performances."
+              },
+              FoundersDay: {
+                date: "February 29 (biennial)",
+                description: "Bharatanatyam performances by alumni using Rukmini Devi's original choreographies, with lectures on her contributions to dance revival."
+              }
+            },
+            nearby: "Theosophical Society, Elliot's Beach",
+            description: "Dedicated to the founder of Kalakshetra, this museum preserves Rukmini Devi's personal collections and contributions to reviving Bharatanatyam."
+          },
+          {
+            name: "Cholamandal Artists' Village",
+            image: "culture/Chol.jpeg",
+            location: "Chennai, Tamil Nadu",
+            besttime: "Year-round",
+            hours: "9:00 AM - 6:30 PM",
+            highlights: "Contemporary art, Working studios, Sculpture garden",
+            events: {
+              KalaYatra: {
+                date: "January 26 annually",
+                description: "All-night art festival with live painting, sculpture demonstrations, experimental performances, and bonfire storytelling sessions."
+              },
+              FullMoonArtNights: {
+                date: "Every full moon evening",
+                description: "Open-air exhibitions under moonlight with artists working live, accompanied by fusion music blending Carnatic and contemporary styles."
+              }
+            },
+            nearby: "Covelong Beach, DakshinaChitra",
+            description: "India's largest artists' commune, this village showcases contemporary South Indian art with working studios, galleries, and regular cultural events."
+          },
+          {
+            name: "Kutiyattam Kendra",
+            image:"culture/Kuti.jpeg",
+            location: "Thrissur, Kerala",
+            besttime: "August to March",
+            hours: "9:00 AM - 5:00 PM (Performance times vary)",
+            highlights: "Ancient Sanskrit theatre, Traditional Koothambalam",
+            events: {
+              KutiyattamFestival: {
+                date: "November 1-7 annually",
+                description: "Week-long celebration of this UNESCO-recognized art form, featuring complete act performances (each lasting 6-8 hours) from classic Sanskrit dramas."
+              },
+              PooramPerformances: {
+                date: "April/May (Malayalam month of Medam)",
+                description: "Special abbreviated Kutiyattam shows during Thrissur Pooram festival, adapted for temple courtyard audiences with elaborate ceremonial processions."
+              }
+            },
+            nearby: "Kerala Kalamandalam, Vadakkunnathan Temple",
+            description: "Dedicated to preserving Kutiyattam (UNESCO-recognized Sanskrit theatre), this center offers rare opportunities to witness this ancient performance art."
+          }
+        ];
+
+      // === LOAD CULTURAL CENTRE CARDS ===
+      const culturalGrid = document.getElementById("culturalGrid");
+      if (culturalGrid) {
+        culturalData.forEach(centre => {
+          const card = document.createElement("div");
+          card.className = "card cultural-card";
+          
+          // Set all data attributes
+          card.dataset.name = centre.name;
+          card.dataset.image = centre.image;
+          card.dataset.location = centre.location;
+          card.dataset.besttime = centre.besttime;
+          card.dataset.hours = centre.hours;
+          card.dataset.highlights = centre.highlights;
+          card.dataset.nearby = centre.nearby;
+          card.dataset.description = centre.description;
+          card.dataset.events = JSON.stringify(centre.events);
+
+          card.innerHTML = `
+            <img src="${centre.image}" alt="${centre.name}">
+            <h4>${centre.name}</h4>
+            <p><i class="fas fa-map-marker-alt"></i> ${centre.location}</p>
+            <p><i class="fas fa-clock"></i> ${centre.hours}</p>
+          `;
+
+          culturalGrid.appendChild(card);
+        });
+      }
+
+      // === MODAL FUNCTIONALITY ===
+      const modal = document.getElementById("culturalModal");
+      if (modal) {
+        const closeBtn = modal.querySelector(".close");
+        
+        // Add click event to all cultural centre cards
+        document.querySelectorAll(".cultural-card").forEach(card => {
+          card.addEventListener("click", function() {
+            // Populate modal with data from clicked card
+            document.getElementById("culturalTitle").textContent = this.dataset.name;
+            document.getElementById("culturalImage").src = this.dataset.image;
+            document.getElementById("culturalLocation").textContent = this.dataset.location;
+            document.getElementById("culturalBestTime").textContent = this.dataset.besttime;
+            document.getElementById("culturalHours").textContent = this.dataset.hours;
+            document.getElementById("culturalHighlights").textContent = this.dataset.highlights;
+            
+            // Parse and display events
+            const eventsContainer = document.getElementById("culturalEvents");
+            eventsContainer.innerHTML = "";
+            const events = JSON.parse(this.dataset.events);
+            
+            for (const [eventName, eventDetails] of Object.entries(events)) {
+              const eventDiv = document.createElement("div");
+              eventDiv.className = "event-item";
+              eventDiv.innerHTML = `
+                <h4>${eventName.replace(/([A-Z])/g, ' $1').trim()}</h4>
+                <p><strong>Date:</strong> ${eventDetails.date}</p>
+                <p>${eventDetails.description}</p>
+              `;
+              eventsContainer.appendChild(eventDiv);
+            }
+            
+            document.getElementById("culturalNearby").textContent = this.dataset.nearby;
+            document.getElementById("culturalDescription").textContent = this.dataset.description;
+            
+            // Show modal
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden";
+          });
+        });
+
+        // Close modal when clicking X button
+        if (closeBtn) {
+          closeBtn.addEventListener("click", function() {
+            modal.style.display = "none";
+            document.body.style.overflow = "";
+          });
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener("click", function(event) {
+          if (event.target === modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = "";
+          }
+        });
+      }
+
+      // === SEARCH FUNCTIONALITY ===
+      const searchInput = document.getElementById("culturalSearch");
+      const searchBtn = document.getElementById("searchBtn");
+
+      function searchCentres() {
+        const query = searchInput.value.toLowerCase().trim();
+        const cards = document.querySelectorAll(".cultural-card");
+        
+        cards.forEach(card => {
+          const name = card.dataset.name.toLowerCase();
+          const location = card.dataset.location.toLowerCase();
+          const highlights = card.dataset.highlights.toLowerCase();
+          
+          if (name.includes(query) || location.includes(query) || highlights.includes(query)) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      }
+
+      if (searchBtn && searchInput) {
+        searchBtn.addEventListener("click", searchCentres);
+        searchInput.addEventListener("keyup", function(e) {
+          if (e.key === "Enter") searchCentres();
+        });
+      }
+    });
+  </script>
+  <script src="ra.js"></script>
+   
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h2>Discover Heritage Sites</h2>
+        <p>Exploring cultural heritage through technology</p>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2023 Discover Heritage Sites. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
